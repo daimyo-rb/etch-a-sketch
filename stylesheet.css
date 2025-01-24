@@ -1,3 +1,37 @@
-/* h1 {
-    color: red;
-} */
+:root {
+    --sideLength: 1;
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+}
+
+.container {
+    height: 100%;
+    /* border: 1px solid black; */
+}
+
+.square {
+    max-width: 80vw;
+    max-height: 80vh;
+    aspect-ratio: 1;
+    border: 1px solid black;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.cell {
+    flex: 0 0 calc(100% / var(--sideLength));
+    aspect-ratio: 1;
+    border: 1px solid rgb(204, 204, 204);   
+}
+
+.highlight {
+    background-color: yellow;
+}
