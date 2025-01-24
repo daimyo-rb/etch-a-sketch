@@ -1,5 +1,13 @@
 console.log('script.js loaded');
 
+function getRandomColor(){
+    let redChannel = Math.floor(Math.random() * 255);
+    let greenChannel = Math.floor(Math.random() * 255);
+    let blueChannel = Math.floor(Math.random() * 255);
+    let colorStr = `rgb(${redChannel}, ${greenChannel}, ${blueChannel})`;
+    return colorStr;
+}
+
 function buildGrid(sideLength){
     const square = document.querySelector('.square');
     document.documentElement.style.setProperty('--sideLength',sideLength);
@@ -11,7 +19,14 @@ function buildGrid(sideLength){
     square.addEventListener("mouseover", (e) => {
         // console.log(e);
         if (e.target != square){
-            e.target.classList.add('highlight');
+            // e.target.classList.add('highlight');
+            // let highlightColor = 'red';
+            let highlightColor = getRandomColor();
+            e.target.style.backgroundColor = highlightColor;
+            let curOpacity = parseFloat(e.target.style.opacity);
+            (curOpacity && curOpacity < 1) 
+                ? e.target.style.opacity = curOpacity + 0.1
+                : e.target.style.opacity = 0.1;
         }
     });
 }
